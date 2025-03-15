@@ -32,12 +32,7 @@ async function loadInputData(): Promise<{
   study1ReconTTQ: Datum[];
 }> {
   const directory = path.resolve(__dirname, "../input");
-  const files = [
-    "study1-fe.json",
-    "study1-recon.json",
-    "study1-fe-ttq.json",
-    "study1-recon-ttq.json",
-  ];
+  const files = ["fe.json", "recon.json", "fe-ttq.json", "recon-ttq.json"];
 
   try {
     const [study1Fe, study1Recon, study1FeTTQ, study1ReconTTQ] =
@@ -46,8 +41,6 @@ async function loadInputData(): Promise<{
           fsPromises.readFile(path.resolve(directory, file), "utf-8")
         )
       ).then((data) => data.map((d) => JSON.parse(d) as Datum[]));
-
-    console.log("Study 1 FE: ", study1Fe);
 
     return {
       study1Fe,
